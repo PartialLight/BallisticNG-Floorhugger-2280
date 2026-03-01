@@ -1,0 +1,1 @@
+Code Mod that forcibly converts loaded track to silent maglock surfaces (existing maglocks unmodified) on race countdown start, effectively forcing Floorhugger mode. Intended to be used with 2280 but works with anything.
