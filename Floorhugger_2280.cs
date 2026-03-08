@@ -24,11 +24,8 @@ namespace Floorhugger2280
 {
     public class Floorhugger2280ModRegister : CodeMod
     {
-        string id = "Floorhugger 2280";
-
         public override void OnRegistered(string modPath)
         {            
-            CustomHudRegistry.RegisterMod(id);
             NgEvents.NgRaceEvents.OnCountdownStart += Force_Floorhugger;
         }
 
