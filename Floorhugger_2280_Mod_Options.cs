@@ -31,6 +31,7 @@ namespace Floorhugger2280HUDOptions
         private string _configPath;
 
         public static bool Floorhugger2280Toggle;
+        public static float ModernGrounderForceOverrideValue;
 
         public override void OnRegistered(string ModLocation)
         {
@@ -58,6 +59,16 @@ namespace Floorhugger2280HUDOptions
                 {
                     Floorhugger2280Toggle = selector.ToBool();
                 });
+
+            ModOptions.RegisterOption<NgBoxSlider>(false, ModID, SelectorCategory0, "ModernGrounderForceOverrideValue_ID",
+                slider =>
+                {
+                    slider.Configure("Modern Grounder Force Override Value", "A numerical representation of how strong the force keeping ships grounded in 2280 is. Internal default value is 0.0, changes made to this value will apply immediately in-race and override the internal default of zero.",
+                        "", ModernGrounderForceOverrideValue * 100.0f, 0.0f, 100.0f, 0.1f);
+                }, slider =>
+                {
+                    ModernGrounderForceOverrideValue = slider.Value;
+                });
         }
         
         private void OnConfigRead()
@@ -66,7 +77,8 @@ namespace Floorhugger2280HUDOptions
 
             ini.Open(_configPath);
 
-            Floorhugger2280Toggle = ini.ReadValue("Settings", "Floorhugger2280Toggle_ID", Floorhugger2280Toggle);            
+            Floorhugger2280Toggle = ini.ReadValue("Settings", "Floorhugger2280Toggle_ID", Floorhugger2280Toggle);
+            ModernGrounderForceOverrideValue = (float)ini.ReadValue("Settings", "ModernGrounderForceOverrideValue_ID", ModernGrounderForceOverrideValue);
 
             ini.Close();
         }
@@ -78,7 +90,8 @@ namespace Floorhugger2280HUDOptions
             ini.Open(_configPath);
 
             ini.WriteValue("Settings", "Floorhugger2280Toggle_ID", Floorhugger2280Toggle);
-            
+            ini.WriteValue("Settings", "ModernGrounderForceOverrideValue_ID", ModernGrounderForceOverrideValue);
+
             ini.Close();
         }
     }

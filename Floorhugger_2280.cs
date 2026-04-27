@@ -31,10 +31,21 @@ namespace Floorhugger2280
 
         public void Force_Floorhugger(/*ShipController ship*/)
         {
+            GameObject FloorhuggerMonoBehaviourHookObject = new GameObject("GlobalManager");
+            FloorhuggerMonoBehaviourHookObject.AddComponent<FloorhuggerMonoBehaviour>();
+
             if (Floorhugger2280HUDOptions.ModMenuOptions.Floorhugger2280Toggle == true)
             {
-                NgTrackData.TrackProcessor.ConvertTrackToMaglock(true, false);
+                NgTrackData.TrackProcessor.ConvertTrackToMaglock(true, false);                
             }            
+        }        
+    }
+
+    public class FloorhuggerMonoBehaviour : MonoBehaviour
+    {
+        void Update()
+        {
+            Ships.Loaded[NgPeer.MySpawnIndex].PysSim.ModernGrounderForce = Floorhugger2280HUDOptions.ModMenuOptions.ModernGrounderForceOverrideValue;
         }
     }
 }
