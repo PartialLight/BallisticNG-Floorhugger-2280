@@ -64,7 +64,7 @@ namespace Floorhugger2280HUDOptions
                 slider =>
                 {
                     slider.Configure("Modern Grounder Force Override Value", "A numerical representation of how strong the force keeping ships grounded in 2280 is. Internal default value is 0.0, changes made to this value will apply immediately in-race and override the internal default of zero.",
-                        "", ModernGrounderForceOverrideValue, 0.0f, 100.0f, 0.1f);
+                        "", ModernGrounderForceOverrideValue, 0.0f, 225.0f, 0.1f);
                 }, slider =>
                 {
                     ModernGrounderForceOverrideValue = slider.Value;
